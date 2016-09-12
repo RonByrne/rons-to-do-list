@@ -1,0 +1,75 @@
+<!doctype html>
+
+<!--
+*	Author:	RonaldByrne
+*	Assignment:	WE4	Mobile	Web	Applications,	Digital	Skills	Academy
+*	Date	:	2016/09/12
+*	Ref:	......................................
+-->
+
+<html >
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="css/roncustom.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<!-- I have included all of my js at the foot of the page because my app will run on mobile. This will prevent the browser from hanging while loading resources on a slower connection -->
+
+  <title>To Do List App</title>
+
+</head>
+
+<!--ng-app root element of AngularJS application-->
+
+<body ng-app="myModule">
+<div class="ron-container ron-blue ron-center">
+  <h1><img src="images/icon_small.png"> To Do List <img src="images/icon_small.png"></h1> 
+</div>
+	<form class="ron-container">
+	<div class="ron-row-padding" ng-controller="myController">
+		<div class="ron-third">
+ <label class="ron-label ron-text-blue"><b>Task</b></label>
+
+<!-- This required input field feeds into to the 'Task' element of 'ToDoList' array in console.js-->
+	      <input class="ron-input ron-border" placeholder="What do you need to do?" type="text" required ng-model="newListItem.Task"/><br></div>
+	      <div class="ron-third">
+ <label class="ron-label ron-text-blue"><b>Day</b></label>
+
+<!-- This required input field feeds into to the 'Day' element of 'ToDoList' array in console.js-->
+			<input class="ron-input ron-border" placeholder="What day?"type="text" required ng-model="newListItem.Day"/><br/></div>
+			<div class="ron-third">
+ <label class="ron-label ron-text-blue"><b>Time</b></label>
+
+<!-- This required input field feeds into to the 'Time' element of 'ToDoList' array in console.js-->
+			<input class="ron-input ron-border" placeholder="What time?"type="text" required ng-model="newListItem.Time"/><br/></div>
+			<div class="ron-container ron-center">
+
+<!-- When clicked, this button enters 'Task' 'Day' and 'Time' vairaibles into 'ToDoList' array in console.js-->
+
+	      <button class="ron-btn ron-ripple ron-blue ron-large" data-ng-click="makeListItem()"> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save To List</button></div>
+
+	      	<div class="ron-panel ron-pale-yellow ron-leftbar ron-border-yellow">
+	      		<div class="container ron-center"><h2>Your List of Tasks</h2></div>
+
+<!-- By using ng-repeat on each element of this unordered list, the three pre-set tasks in console.js are displayed. This is for the benefit of the user to demonstrate the format in which tasks are displayed-->
+
+		<ul class="ron-ul ron-card-4 ron-center">
+			<li class="ron-padding-16" ng-repeat="currentListItem in ToDoList | filter:searchTask"><h5><strong>{{currentListItem.Task}} {{' on '}} {{currentListItem.Day}} {{' at '}} {{currentListItem.Time}} </strong></h5><button class="ron-btn ron-blue ron-round-xxlarge ron-slim" ng-click="delete($index)"> <i class="fa fa-times-circle" aria-hidden="true"></i> Delete This Task {{elem}}</button></li>
+
+		</ul>
+
+<!-- unordered list finishes-->
+
+		</div>
+	</div>
+	</div>
+</form>
+
+</body>
+<!-- I have included all of my js at the foot of the page because my app will run on mobile. This will prevent the browser from hanging while loading resources on a slower connection.-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>
+  <script src="http://code.angularjs.org/1.3.0/angular-route.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/control.js"></script>
+</html>
